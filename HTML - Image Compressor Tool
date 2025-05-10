@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Compressor Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Image Compressor Tool</h1>
+    
+    <!-- File input for image upload -->
+    <input type="file" id="imageInput" accept="image/*" onchange="compressImage(event)" />
+    
+    <!-- Image preview container -->
+    <div id="imagePreview" class="image-preview"></div>
+
+    <!-- Compression quality selection -->
+    <div>
+      <label for="quality">Compression Quality: </label>
+      <input type="range" id="quality" min="0" max="100" value="70" onchange="updateQualityLabel()">
+      <span id="qualityLabel">70%</span>
+    </div>
+
+    <!-- Download button for the compressed image -->
+    <a id="downloadBtn" href="#" download="compressed_image.jpg" style="display:none;">Download Compressed Image</a>
+  </div>
+
+  <script src="compressor.js"></script>
+</body>
+</html>
