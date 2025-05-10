@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Converter Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Image Converter Tool</h1>
+    
+    <!-- File input for image upload -->
+    <input type="file" id="imageInput" accept="image/*" onchange="loadImage(event)" />
+    
+    <!-- Image preview container -->
+    <div id="imagePreview" class="image-preview"></div>
+
+    <!-- Format selection dropdown -->
+    <div>
+      <label for="format">Choose Format: </label>
+      <select id="format" onchange="convertImage()">
+        <option value="image/jpeg">JPEG</option>
+        <option value="image/png">PNG</option>
+        <option value="image/webp">WebP</option>
+      </select>
+    </div>
+
+    <!-- Download button for the converted image -->
+    <a id="downloadBtn" href="#" download="converted_image" style="display:none;">Download Converted Image</a>
+  </div>
+
+  <script src="converter.js"></script>
+</body>
+</html>
