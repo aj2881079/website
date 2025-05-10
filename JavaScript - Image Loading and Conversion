@@ -1,0 +1,34 @@
+function loadImage(event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById('imagePreview');
+  preview.innerHTML = ''; // Clear previous preview
+
+  if (file) {
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    img.id = 'previewImage';
+    img.style.maxWidth = '100%';
+    preview.appendChild(img);
+  }
+}
+
+function convertImage() {
+  const image = document.getElementById('previewImage');
+  const format = document.getElementById('format').value;
+
+  if (image) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = image.width;
+    canvas.height = image.height;
+    ctx.drawImage(image, 0, 0);
+
+    canvas.toBlob(function(blob) {
+      const url = URL.createObjectURL(blob);
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.href = url;
+      downloadBtn.download = `converted_image.${format.split('/')[1]}`;
+      downloadBtn.style.display = 'inline-block';
+    }, format);
+  }
+}
